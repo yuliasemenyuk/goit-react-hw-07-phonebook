@@ -38,7 +38,7 @@ const contactsSlice = createSlice({
     [addContact.fulfilled] (state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
-      state.contacts.item.push(action.payload);
+      state.contacts.items.push(action.payload);
     },
     [addContact.rejected]: handleRejected,
     [deleteContact.pending]: handlePending,
@@ -53,6 +53,8 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
+export const { filterContacts } = contactsSlice.actions;
+
 
 // const initialState = {
 //   contacts: [],

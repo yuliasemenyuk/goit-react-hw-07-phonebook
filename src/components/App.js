@@ -1,7 +1,7 @@
 import Filter from "./Filter/Filter";
 import { Form } from "./Form/Form";
 import { ContactList } from "./ContactList/ContactList";
-import { addContact, deleteContact } from "../redux/contactsSlice";
+import { addContact, deleteContact } from "../redux/operations";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./App.module.css";
