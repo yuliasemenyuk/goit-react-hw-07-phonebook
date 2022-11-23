@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ContactItem } from "../ContactItem/ContactItem";
+import { getIsLoading } from "../../redux/selectors";
 import { deleteContact } from "../../redux/operations";
 import { getFilterValue, getContacts } from "../../redux/selectors";
+import { LineWave as Loader } from  'react-loader-spinner';
 import style from "./ContactList.module.css";
 
 export const ContactList = () => {
@@ -23,9 +25,11 @@ export const ContactList = () => {
       );
     }
   };
+  const isLoading = useSelector(getIsLoading);
 
-  return (
-    <ul className={style.contacts_list}>
+  return isLoading ? (
+    <Loader/> ) : (
+      <ul className={style.contacts_list}>
       {filteredContacts(contacts).map(({ id, name, number }) => (
         <li key={id} className={style.contact_list_item}>
           <ContactItem contactItem={{ name, number, id }}></ContactItem>
@@ -35,5 +39,6 @@ export const ContactList = () => {
         </li>
       ))}
     </ul>
-  );
-};
+    );
+ };
+  
