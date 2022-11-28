@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { getContacts, getFilterValue } from "./selectors";
 
 axios.defaults.baseURL = "https://637bba2c72f3ce38ea93d189.mockapi.io";
 
@@ -43,11 +42,3 @@ export const deleteContact = createAsyncThunk(
     }
 );
 
-// export const filterContacts = createAsyncThunk(
-//     "contacts/filterContacts",
-//     async (getFilterValue, thunkAPI) => {
-//         try {
-
-//         }
-//     }
-// )

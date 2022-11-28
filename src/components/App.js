@@ -15,8 +15,6 @@ export const App = () => {
       <h2 className={style.title}>Contacts</h2>
       <Filter />
       <ContactList onDeleteContact={deleteContact} />
-   
-      {/* {getIsLoading ? : <LineWave />} */}
       <ToastContainer autoClose={2000} />
     </div>
   );
