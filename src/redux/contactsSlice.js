@@ -30,7 +30,6 @@ const contactsSlice = createSlice({
     [fetchContacts.pending]: handlePending,
     [fetchContacts.fulfilled] (state, action) {
       state.contacts.isLoading = false;
-      console.log(state.contacts);
       state.contacts.error = null;
       state.contacts.items = action.payload;
     },

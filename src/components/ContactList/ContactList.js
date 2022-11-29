@@ -3,7 +3,7 @@ import { ContactItem } from "../ContactItem/ContactItem";
 import { getIsLoading } from "../../redux/selectors";
 import { deleteContact } from "../../redux/operations";
 import { getFilterValue, getContacts } from "../../redux/selectors";
-import { LineWave as Loader } from  'react-loader-spinner';
+import { toast } from "react-toastify";
 import style from "./ContactList.module.css";
 
 export const ContactList = () => {
@@ -27,15 +27,22 @@ export const ContactList = () => {
   };
   const isLoading = useSelector(getIsLoading);
 
-  return isLoading ? (
-    <Loader/> ) : (
+  return (
       <ul className={style.contacts_list}>
       {filteredContacts(contacts).map(({ id, name, number }) => (
         <li key={id} className={style.contact_list_item}>
           <ContactItem contactItem={{ name, number, id }}></ContactItem>
-          <button onClick={() => handleDelete(id)} className={style.contact_item_btn}>
+          
+          <button className={style.contact_item_btn}
+             onClick={() => {
+              handleDelete(id);
+              toast.success(`Contact '${name}' deleted`);
+            }}
+            disabled={isLoading}
+          >
             Delete
           </button>
+
         </li>
       ))}
     </ul>

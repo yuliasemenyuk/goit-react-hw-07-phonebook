@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { getContacts } from "../../redux/selectors";
+import { getContacts, getIsLoading } from "../../redux/selectors";
 import { addContact } from "../../redux/operations";
 import style from "./Form.module.css";
+
 
 export const Form = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,8 @@ export const Form = () => {
     };
 
     dispatch(addContact(contact));
+
+    toast.success(`Contact '${name}' is added`);
     
     reset();
   };
@@ -44,6 +47,8 @@ export const Form = () => {
     setName("");
     setNumber("");
   };
+
+  const isLoading = useSelector(getIsLoading);
 
   return (
     <form onSubmit={handleSubmit} className={style.saving_form}>
@@ -75,7 +80,7 @@ export const Form = () => {
         className={style.saving_btn}
         onSubmit={handleSubmit}
         type="submit"
-      >
+        disabled={isLoading}>
         Add contact
       </button>
     </form>

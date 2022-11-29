@@ -15,7 +15,6 @@ const Filter = () => {
     dispatch(filterContacts(filter));
   });
 
-  // dispatch(filterContacts(filter));
 
   return (
     <label className={style.filter_lable}>
